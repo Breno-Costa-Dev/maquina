@@ -1,0 +1,74 @@
+@charset 'UTF-8';
+body{
+    background-color: rgb(45, 44, 44);
+    color: white;
+}
+h1{
+    text-align: center;
+}
+div{
+    width: 50vw;
+    margin: auto;
+    padding: 5px;
+    background-color: rgba(54, 197, 249, 0.405);
+    text-align: center;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+label{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(245, 247, 249);
+    text-align: left;
+}
+span{
+    display:block;
+    background-color: rgb(0, 0, 0);
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+select{
+    width: 100px;
+}
+#resultados{
+    background-color: rgb(241, 38, 38);
+}
+#titulo{
+    background-color: black;
+    color: rgb(254, 254, 252);
+    font-weight: bolder;
+    border-radius: 5px;
+    font-size: 25px;
+    text-align: center;
+    margin: auto;
+}
+div#estatics{
+    background-color: rgba(255, 255, 0, 0.77);
+    color: rgb(0, 0, 0);
+    color: white;
+}
+#estatics > h2{
+    background-color: black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+#estatics > p{
+    background-color: black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.decoration{
+    background-color: rgb(18, 67, 18);
+    width: 200px;
+    margin: 5px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+p#custo{
+    background-color: rgb(66, 66, 65);
+    width: 100px;
+    margin: auto;
+    border-radius: 10px;
+}

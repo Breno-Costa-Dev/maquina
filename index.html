@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquina 3D</title>
+</head>
+<body>
+    <h1>Cálculo da Peça</h1>
+
+    <div id="valores">
+        <span>
+            <label for="nomepeca">Nome da peça:</label>
+            <input type="text" name="nomepeca" id="inome">
+        </span>
+        <span>
+            <label for="tempopeca">Tempo de Impressão:</label>
+            <input type="text" name="tempopeca" id="itempo" placeholder="00:00">
+        </span>
+        <span>
+            <label for="filapeca">Quantidade de filamento usado(000g)</label>
+            <input type="number" name="filapeca" id="ifila" placeholder="000">
+        </span>
+        <input type="button" value="Calcular" id="enviardados">
+    </div>
+
+    <div id="resultados">
+        <p id="titulo"></p>
+       <span>
+           <label for="custo">Custo de produção:</label>
+           <p id="custo"></p>
+       </span>
+        <span>
+            <label for="">Valor em média de venda:</label>
+            <p id="venda25"  class="decoration"></p>
+            <p id="lucro25" class="decoration"></p>
+            <hr>
+            <p id="venda50" class="decoration"></p>
+            <p id="lucro50" class="decoration"></p>
+            <hr>
+            <p id="venda75" class="decoration"></p>
+            <p id="lucro75" class="decoration"></p>
+        </span>
+    </div>
+
+     <div id="estatics">
+        <h2>Estatisiticas</h2>
+         <p id="minutos"></p>
+           <p id="energia"></p>
+           <p id="dinheiro"></p>
+           <p id="valorfila"></p>
+     </div>
+
+    <script>
+        var nome = document.getElementById('inome')
+        var tempo = document.getElementById('itempo')
+        var fila = document.getElementById('ifila')
+        var acessorio = document.getElementById('iacess')
+
+        var btn = document.getElementById('enviardados')
+
+        var tt = document.getElementById('titulo')
+        var ct = document.getElementById('custo')
+        var vd = document.getElementById('venda')
+
+        var kw = 125
+        var dr = 84
+
+
+        btn.addEventListener('click',Calcular)
+
+        function Calcular(){
+
+        tt.innerText = nome.value
+
+        let valor = tempo.value
+        let partes = valor.split(":")
+        let horas = Number(partes[0])
+        let minutos = partes[1] ? Number(partes[1]) : 0
+        let totalminutos = (horas *60) + minutos
+        document.getElementById("minutos").innerText = totalminutos + " minutos"
+
+        var r1 = (kw * totalminutos)/100000
+        document.getElementById("energia").innerText = r1 + " kW de Energia"
+
+        var r2 = (r1 * dr)/100
+        document.getElementById("dinheiro").innerText = r2 + " $ dinheiro"
+
+        var r3 = fila.value/10
+        document.getElementById("valorfila").innerText = r3 + " valor do filamento"
+
+        var r4 = r3 + r2
+        document.getElementById("custo").innerText = r4.toLocaleString('pt-BR', {style:'currency',currency:'BRL'})
+
+        var r5 = r4  * (1 + 25 / 100)
+        document.getElementById("venda25").innerText = r5.toLocaleString('pt-BR', {style:'currency',currency:'BRL'}) + " (+25%)"
+
+        var r6 = r5 - r4
+        document.getElementById("lucro25").innerText = r6.toLocaleString('pt-BR', {style:'currency',currency:'BRL'}) + " Lucro"
+
+        var r7 = r4 * (1 + 50/100)
+        document.getElementById("venda50").innerText = r7.toLocaleString('pt-BR', {style:'currency',currency:'BRL'}) + " (+50%)"
+
+         var r8 = r7 - r4
+        document.getElementById("lucro50").innerText = r8.toLocaleString('pt-BR', {style:'currency',currency:'BRL'}) + " Lucro"
+
+         var r9 = r4 * (1 + 50/100)
+        document.getElementById("venda75").innerText = r9.toLocaleString('pt-BR', {style:'currency',currency:'BRL'}) + " (750%)"
+        
+         var r10 = r9 - r4
+        document.getElementById("lucro75").innerText = r10.toLocaleString('pt-BR', {style:'currency',currency:'BRL'}) + " Lucro"
+        }
+    </script>
+</body>
+</html>
